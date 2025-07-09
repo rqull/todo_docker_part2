@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./prisma:/app/prisma # agar file dev.db persistent di host
+      - ./.env:/app/.env:ro
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
